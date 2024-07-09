@@ -1,9 +1,11 @@
+require('dotenv').config()
+
 var express = require('express');
 var querystring = require('querystring');
 var request = require('request');
 
-var client_id = 'YOUR_CLIENT_ID';
-var client_secret = 'YOUR_CLIENT_SECRET';
+var client_id = process.env.CLIENT_ID;
+var client_secret = process.env.CLIENT_SECRET;
 var redirect_uri = 'http://localhost:8888/callback';
 
 var app = express();

@@ -1,5 +1,6 @@
-// Authorization token that must have been created previously. See : https://developer.spotify.com/documentation/web-api/concepts/authorization
-const token = 'YOUR_TOKEN';
+require('dotenv').config()
+
+const token = process.env.TOKEN;
 
 const fetchWebApi = async (endpoint, method, body) => {
   console.log(`https://api.spotify.com/${endpoint}`);
@@ -22,7 +23,6 @@ const fetchWebApi = async (endpoint, method, body) => {
 }
 
 const getTopTracks = async () => {
-  // Endpoint reference : https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
   const topTracks = await fetchWebApi(
     'v1/me/top/tracks?time_range=long_term&limit=5', 'GET'
   );
@@ -31,7 +31,6 @@ const getTopTracks = async () => {
 }
 
 const getPlaylists = async () => {
-  // Endpoint reference : https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
   const playlists = await fetchWebApi(
     'v1/me/playlists', 'GET'
   );
@@ -40,7 +39,6 @@ const getPlaylists = async () => {
 }
 
 const getSavedTracks = async () => {
-  // Endpoint reference : https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
   const tracks = await fetchWebApi(
     'v1/me/tracks?offset=0&limit=50', 'GET'
   );
